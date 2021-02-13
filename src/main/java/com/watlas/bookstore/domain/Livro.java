@@ -1,5 +1,7 @@
 package com.watlas.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -15,6 +17,7 @@ public class Livro implements Serializable {
     private String titulo;
     private String nome_autor;
     private String texto;
+    @JsonIgnore //protege contra serialização
     @ManyToOne
     @JoinColumn
     private Categoria categoria;

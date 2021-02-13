@@ -1,0 +1,24 @@
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/book
+spring.datasource.username=postgres
+spring.datasource.password=171717
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.hibernate.show-sql=true
+
+
+
+//
+banco teste
+### Habilitar acesso ao H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+### Definir configurações do H2
+spring.datasource.platform=h2
+spring.datasource.url=jdbc:h2:file:~/test
+spring.datasource.username=sa
+spring.datasource.password=
+spring.datasource.driver-class-name=org.h2.Driver
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
