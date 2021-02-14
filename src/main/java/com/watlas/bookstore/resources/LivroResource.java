@@ -49,18 +49,18 @@ public class LivroResource {
         return ResponseEntity.ok().body(listDTO);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro obj){
+    public ResponseEntity<Livro> update(@Valid @PathVariable Integer id, @RequestBody Livro obj){
         Livro newobj = service.update(id, obj);
         return ResponseEntity.ok().body(newobj);
     }
 
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Livro> updatePatch(@PathVariable Integer id, @RequestBody Livro obj){
+    public ResponseEntity<Livro> updatePatch(@Valid @PathVariable Integer id, @RequestBody Livro obj){
         Livro newobj = service.update(id, obj);
         return ResponseEntity.ok().body(newobj);
     }
     @PostMapping
-    public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer idcat, @RequestBody Livro obj){
+    public ResponseEntity<Livro> create(@Valid @RequestParam(value = "categoria", defaultValue = "0") Integer idcat, @RequestBody Livro obj){
         Livro newObj = service.create(idcat, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livro/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();

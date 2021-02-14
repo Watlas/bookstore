@@ -1,7 +1,9 @@
 package com.watlas.bookstore.dtos;
 
 import com.watlas.bookstore.domain.Categoria;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class CategoriaDTO implements Serializable {
@@ -9,7 +11,11 @@ public class CategoriaDTO implements Serializable {
     private static final long serialVersionUID = 1l;
 
     private Integer id;
+    @NotEmpty(message = "Campo NOME vazio")
+    @Length(min = 3, max = 100, message = "o campo nome deve ter entre 3 e 10 caracteres")
     private String nome;
+    @NotEmpty(message = "Campo Descricao vazio")
+    @Length(min = 3, max = 100, message = "o campo Descricao deve ter entre 3 e 10 caracteres")
     private String descricao;
 
     public CategoriaDTO() {

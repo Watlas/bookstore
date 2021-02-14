@@ -1,8 +1,10 @@
 package com.watlas.bookstore.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,11 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotEmpty(message = "Campo NOME vazio")
+    @Length(min = 3, max = 100, message = "o campo nome deve ter entre 3 e 10 caracteres")
     private String nome;
+    @NotEmpty(message = "Campo Descricao vazio")
+    @Length(min = 3, max = 100, message = "o campo Descricao deve ter entre 3 e 10 caracteres")
     private String descricao;
 
     @OneToMany(mappedBy = "categoria")
