@@ -1,13 +1,14 @@
 package com.watlas.bookstore.services;
 
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.watlas.bookstore.domain.Categoria;
 import com.watlas.bookstore.domain.Livro;
 import com.watlas.bookstore.repositories.CategoriaRepository;
 import com.watlas.bookstore.repositories.LivroRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 @Service
 public class DBservice {
@@ -17,14 +18,23 @@ public class DBservice {
     @Autowired
     private LivroRepository livroRepository;
 
-    public void instanciaBaseDeDados(){
-        Categoria ca1 = new Categoria(null, "informatica", "livros de ti");
+    public void instanciaBaseDeDados() {
 
-        Livro l1 = new Livro(null, "Clean Code", "Watlas", "lorem ipsum", ca1);
+        Categoria cat1 = new Categoria(null, "Informática", "Livros de informatica");
+        Categoria cat2 = new Categoria(null, "Ficção Científica", "Ficção Científica");
+        Categoria cat3 = new Categoria(null, "Biografias", "Livros de Biografias");
 
-        ca1.getLivros().addAll(Arrays.asList(l1));
+        Livro l1 = new Livro(null, "Clean Code", "Robert Martin", "Lorem ipsum", cat1);
+        Livro l2 = new Livro(null, "Engenharia de Software", "Louis V. Gerstner", "Lorem ipsum", cat1);
+        Livro l3 = new Livro(null, "The Time Machine", "H.G. Wells", "Lorem ipsum", cat2);
+        Livro l4 = new Livro(null, "The War of the Worlds", "H.G. Wells", "Lorem ipsum", cat2);
+        Livro l5 = new Livro(null, "I, Robot", "Isaac Asimov", "Lorem ipsum", cat2);
 
-        this.categoriaRepository.saveAll(Arrays.asList(ca1));
-        this.livroRepository.saveAll(Arrays.asList(l1));
+        cat1.getLivros().addAll(Arrays.asList(l1, l2));
+        cat2.getLivros().addAll(Arrays.asList(l3, l4, l5));
+
+        categoriaRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+        livroRepository.saveAll(Arrays.asList(l1, l2, l3, l4, l5));
     }
+
 }

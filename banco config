@@ -7,6 +7,7 @@ spring.jpa.hibernate.show-sql=true
 
 
 
+
 //
 banco teste
 ### Habilitar acesso ao H2 Console
