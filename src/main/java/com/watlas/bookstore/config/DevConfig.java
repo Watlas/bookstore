@@ -13,14 +13,12 @@ public class DevConfig {
     @Autowired
     private DBservice DBservice;
 
-    @Value("${String.jpa.hibernate.ddl-auto}")
-    private String strategy;
     @Bean
-    public boolean instanciaBaseDeDados(){
-        if(strategy.equals("create")){
+    public void instanciaBaseDeDados(){
+
             this.DBservice.instanciaBaseDeDados();
-        }
-        return false;
+
+
     }
 
 
