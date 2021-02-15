@@ -8,18 +8,21 @@ import java.io.Serializable;
 
 public class CategoriaDTO implements Serializable {
 
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     private Integer id;
-    @NotEmpty(message = "Campo NOME vazio")
-    @Length(min = 3, max = 100, message = "o campo nome deve ter entre 3 e 10 caracteres")
+
+    @NotEmpty(message = "Campo NOME é requerido")
+    @Length(min = 3, max = 100, message = "O campo NOME deve ter entre 3 e 100 caracteres")
     private String nome;
-    @NotEmpty(message = "Campo Descricao vazio")
-    @Length(min = 3, max = 100, message = "o campo Descricao deve ter entre 3 e 10 caracteres")
+
+    @NotEmpty(message = "Campo DESCRIÇÃO é requerido")
+    @Length(min = 3, max = 200, message = "O campo DESCRIÇÃO deve ter entre 3 e 200 caracteres")
     private String descricao;
 
     public CategoriaDTO() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
     public CategoriaDTO(Categoria obj) {
@@ -52,4 +55,6 @@ public class CategoriaDTO implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
 }
+
