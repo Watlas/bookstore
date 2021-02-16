@@ -26,7 +26,7 @@ public class CategoriaService {
     }
 
     public List<Categoria> findAll() {
-        return repository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Categoria create(Categoria obj) {
