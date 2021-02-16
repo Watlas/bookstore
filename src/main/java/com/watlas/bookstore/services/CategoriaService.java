@@ -6,6 +6,7 @@ import com.watlas.bookstore.repositories.CategoriaRepository;
 import com.watlas.bookstore.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class CategoriaService {
     }
 
     public List<Categoria> findAll() {
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.DESC, "colName"));
     }
 
     public Categoria create(Categoria obj) {
